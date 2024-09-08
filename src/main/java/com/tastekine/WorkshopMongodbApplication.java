@@ -1,10 +1,5 @@
-package com.tastekine.workshop_mongodb;
+package com.tastekine;
 
-import com.tastekine.workshop_mongodb.workshop1.Address;
-import com.tastekine.workshop_mongodb.workshop1.Gender;
-import com.tastekine.workshop_mongodb.workshop1.Student;
-import com.tastekine.workshop_mongodb.workshop1.StudentRepository;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -17,17 +12,9 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.List;
-
 @SpringBootApplication
 @EnableSwagger2
 public class WorkshopMongodbApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(WorkshopMongodbApplication.class, args);
-	}
 
 	@Bean
 	public Docket api() {
@@ -42,22 +29,8 @@ public class WorkshopMongodbApplication {
 		return builder.build();
 	}
 
-	@Bean
-	CommandLineRunner runner(StudentRepository repository) {
-		Address address = null;
-		address.builder().city("Istanbul").country("Turkey").postCode("34440").build();
-
-		return args -> {
-			Student student = new Student(
-					"Erhan",
-					"Tastekin",
-					"erhantastekin1@gmail.com",
-					Gender.MALE,
-					address,
-					List.of("Computer Science"),
-					BigDecimal.TEN,
-					LocalDateTime.now()
-			);
-		};
+	public static void main(String[] args) {
+		SpringApplication.run(WorkshopMongodbApplication.class, args);
 	}
+
 }
